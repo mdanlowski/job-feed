@@ -1,0 +1,24 @@
+{
+  "name": "job-feed",
+  "version": "1.0.0",
+  "description": "Job feed app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdanlowski/job-feed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdanlowski/job-feed/issues"
+  },
+  "homepage": "https://github.com/mdanlowski/job-feed#readme",
+  "dependencies": {
+    "cron": "^1.7.2",
+    "node-fetch": "^2.6.0"
+  }
+}
