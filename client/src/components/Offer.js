@@ -15,13 +15,12 @@ export default class Offer extends Component {
   }
 
   componentDidMount(){
-    document.getElementById(`desc-${this.props.data.id}`).innerHTML = this.props.data.description;
+    // document.getElementById(`desc-${this.props.data.id}`).innerHTML = this.props.data.description;
   }
 
   render(){
     const data = this.props.data;
 
-    console.log(data)
     return (
       <div className={"job-offer root"}>
         <Paper className={`${this.state.classes.spacing} content`}>

@@ -4,9 +4,10 @@ $underpantsBlue: rgb(170, 238, 255);
 $underpantsBlueWAlpha: rgba(170, 238, 255, 0.2);
 $url: #09d3ac;
 $secondary: rgba(0, 0, 0, 0.54);
+$material-gray: #fafafa;
 
-.App {
-}
+// .App {
+// }
 
 .App-header {
   text-align: center;
@@ -25,14 +26,11 @@ $secondary: rgba(0, 0, 0, 0.54);
 }
 
 .job-offer-list {
-  #pagination {
-    flex-grow: 1;
-    max-width: 400px;
-  }
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-
+  #job-offer-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 .job-offer {
@@ -69,14 +67,31 @@ $secondary: rgba(0, 0, 0, 0.54);
 
 .utils {
   &.main {
-    margin: auto;
+    // margin: auto;
     display: grid;
-    grid-template-columns: 400px auto;
+    grid-template-columns: 360px auto;
+
+    #pagination {
+      z-index: 1000;
+      position: sticky;
+      top: 0;
+      padding-left: calc(50% - 200px);
+      padding-right: calc(50% - 200px);
+      max-width: 400px;
+      flex-grow: 1;
+      background-color: $material-gray;
+      .pageno {
+        width: 42px;
+        position: absolute;
+        top: 20px;
+        left: calc(50% - 20px);
+      }
+    }
   }
 
   &.sidebar {
     background-color: $underpantsBlueWAlpha;
-    width: 400px;
+    width: 360px;
 
     
     .filters {

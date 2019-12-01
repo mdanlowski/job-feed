@@ -9,48 +9,41 @@ import Offer from './Offer';
 export default class JobOffers extends Component {
   constructor(props){
     super();
-    this.state = { activeStep: 0 };
-    this.handleNext = this.handleNext.bind(this);
-    this.handleBack = this.handleBack.bind(this);
   }
-  handleNext() {
-    this.setState((pState) => { return { activeStep: pState.activeStep + 1 } })
-  };
-  handleBack() {
-    this.setState((pState) => { return { activeStep: pState.activeStep - 1 } })
-  };
 
   render(){
-    const pageCount = 10;
-
+    const pages = this.props.pages;
     return (
       <div className="job-offer-list">
         <div id="pagination">
+          <div className="pageno">{this.props.page} / {pages}</div>
           <MobileStepper
             variant="progress"
-            steps={6}
+            steps={pages}
             position="static"
-            activeStep={this.state.activeStep}
+            activeStep={this.props.page}
             // className={classes.root}
           nextButton={
-            <Button size="small" onClick={this.handleNext} disabled={this.state.activeStep === pageCount}>
+            <Button size="small" onClick={this.props.handleNext} disabled={this.props.page === pages}>
               Next
               <KeyboardArrowRight />
             </Button>
           }
           backButton={
-              <Button size="small" onClick={this.handleBack} disabled={this.state.activeStep === 0}>
+              <Button size="small" onClick={this.props.handlePrev} disabled={this.props.page === 1}>
                 <KeyboardArrowLeft />
                 Back
               </Button>
             }
           />
         </div>
-        {
-          this.props.offers.map(
-            offer => <Offer key={offer.id} data={offer} />
-          )
-        }
+        <div id="job-offer-list">
+          {
+            this.props.offers.map(
+              offer => <Offer key={offer.id} data={offer} />
+            )
+          }
+        </div>
       </div>
     );
   }
