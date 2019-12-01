@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -6,50 +6,63 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import ShareIcon from '@material-ui/icons/ShareRounded';
 
-const useStyles = makeStyles(theme => ({
-  spacing: { padding: theme.spacing(2) }})
-);
+export default class Offer extends Component {
+  constructor(props){
+    super();
+    this.state = { classes: makeStyles(theme => ({
+      spacing: { padding: theme.spacing(2) }})
+    ) };
+  }
 
-export default function Offer(props) {
-  const data = props.data;
-  const classes = useStyles();
+  componentDidMount(){
+    document.getElementById(`desc-${this.props.data.id}`).innerHTML = this.props.data.description;
+  }
 
-  return (
-    <div className={"job-offer root"}>
-      <Paper className={`${classes.spacing} content`}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className="img-wrapper">
-              <img className="img" alt="complex" src={data.company_logo} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
-                  {data.title}
-                </Typography>
-                <Typography variant="body2" gutterBottom>
-                  {data.company}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  jaja
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" className={"utils clickable"}>
-                  <ShareIcon></ShareIcon>
-                </Typography>
-              </Grid>
-            </Grid>
+  render(){
+    const data = this.props.data;
+
+    console.log(data)
+    return (
+      <div className={"job-offer root"}>
+        <Paper className={`${this.state.classes.spacing} content`}>
+          <Grid container spacing={2}>
             <Grid item>
-              <Typography variant="subtitle1">$39.00 / hr</Typography>
+              <ButtonBase className="img-wrapper">
+                <img className="img" alt="complex" src={data.company_logo} />
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={2}>
+                <Grid item xs>
+                  {data.created_at.split(' ').slice(0,3).join(' ')}
+                </Grid>
+                <Grid item xs>
+                  <Typography gutterBottom variant="h5">
+                    {data.title}
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    {data.company}
+                  </Typography>
+                  <div className="description">
+                    <div id={"desc-" + data.id}>
+                    </div>
+                  </div>
+                </Grid>
+                <Grid item>
+                  <Typography variant="body2" className={"utils clickable"}>
+                    <ShareIcon></ShareIcon>
+                  </Typography>
+                </Grid>
+              </Grid>
+              {/* <Grid item>
+                <Typography variant="subtitle1">$39.00 / hr</Typography>
+              </Grid> */}
             </Grid>
           </Grid>
-        </Grid>
-      </Paper>
-    </div>
-  );
+        </Paper>
+      </div>
+    );
+  }
 }
 
 

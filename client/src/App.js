@@ -2,7 +2,9 @@ import './App.scss';
 
 import React from 'react';
 import { Typography } from '@material-ui/core';
+
 import JobOffers from './components/JobOffers';
+import Filters from './components/Filters';
 
 class App extends React.Component {
   constructor(){
@@ -32,11 +34,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <header>
-          <Typography className="App-header" variant="h1">
-            Software Job Offers Machine
+          <Typography className="App-header" variant="h3" component="h1">
+            Software Job Offers Harvester
           </Typography>
         </header>
-        <main>
+        <main className={"utils main"}>
+          <aside className={"utils sidebar"}>
+            <Filters />
+          </aside>
           <JobOffers offers={this.state.offers} />
         </main>
       </div>

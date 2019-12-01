@@ -1,20 +1,23 @@
+// @TODO MEDIA QUERIES
+
 $underpantsBlue: rgb(170, 238, 255);
 $underpantsBlueWAlpha: rgba(170, 238, 255, 0.2);
 $url: #09d3ac;
+$secondary: rgba(0, 0, 0, 0.54);
 
 .App {
-  text-align: center;
 }
 
 .App-header {
+  text-align: center;
   background-color: #373c46;
-  min-height: 15vh;
+  padding-top: 12px;
+  padding-bottom: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: $underpantsBlue;
-
 }
 
 .md-link {
@@ -22,24 +25,38 @@ $url: #09d3ac;
 }
 
 .job-offer-list {
-  text-align: center;
-  margin: 2em 4em;
+  #pagination {
+    flex-grow: 1;
+    max-width: 400px;
+  }
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
+
 }
 
 .job-offer {
   &.root {
     margin: 1em;
     flex-grow: 0;
+    width: 600px;
+    min-width: 420px;
   }
   .content {
     margin: 'auto';
-    max-width: 500px;
+    max-width: 600px;
+    .description {
+      color: $secondary;
+      h1, h2, h3, h4, h5 { font-size: 0.85rem; }
+      font-size: 10pt;
+    }
   }
   .img-wrapper {
+    padding: 4px;
     width: 128px;
     height: 128px;
+    border-radius: 5px;
+    border: 1px solid $underpantsBlue;
   }
   .img {
     margin: auto;
@@ -51,6 +68,24 @@ $url: #09d3ac;
 }
 
 .utils {
+  &.main {
+    margin: auto;
+    display: grid;
+    grid-template-columns: 400px auto;
+  }
+
+  &.sidebar {
+    background-color: $underpantsBlueWAlpha;
+    width: 400px;
+
+    
+    .filters {
+      position: sticky;
+      top: 0;
+    }
+
+  }
+
   &.clickable {
     cursor: pointer;
   }

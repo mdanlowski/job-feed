@@ -28,4 +28,6 @@ async function getGithubJobs(){
   });
 }
 
+getGithubJobs()
+
 module.exports = getGithubJobs;
